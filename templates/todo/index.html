@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block Title %}
+<title>Todo List</title>
+{% endblock Title %}
+
+{% block content %}
+<h1 class="mb-4">TODO List</h1>
+
+{% if tasks %}
+  <ul class="list-group">
+    {% for task in tasks %}
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+          <strong>{{ task.content }}</strong>
+          <br>
+          <small class="text-muted">Created: {{ task.created_at }}</small>
+          {% if task.deadline %}
+            <br><small class="text-muted">Deadline: {{ task.deadline }}</small>
+          {% endif %}
+        </div>
+        <div>
+          <span class="badge {% if task.is_done %}badge-success{% else %}badge-danger{% endif %}">
+            <td>{% if task.is_done %}Done{% else %}Not Done{% endif %}</td>
+          </span>
+          <a href="{% url 'todo:task_update' task.id %}" class="btn btn-sm btn-primary ml-2">Update</a>
+          <a href="{% url 'todo:task_delete' task.id %}" class="btn btn-sm btn-danger ml-2">Delete</a>
+          <a href="{% url 'todo:task_toggle' task.id %}" class="btn btn-sm btn-secondary ml-2">
+            {% if task.is_done %}Undo{% else %}Complete{% endif %}
+          </a>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p class="text-muted">No tasks available. Add a new task!</p>
+{% endif %}
+{% endblock content %}
