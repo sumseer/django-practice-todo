@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block Title %}
+  <title>{% if object %}Update{% else %}Create{% endif %} Tag</title>
+{% endblock Title %}
+
+{% block content %}
+  <h1>{% if object %}Update{% else %}Create{% endif %} Tag</h1>
+
+  <form method="post">
+    {% csrf_token %}
+    {% if object %}
+      <input type="hidden" name="id" value="{{ object.id }}">
+    {% endif %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Save</button>
+  </form>
+{% endblock %}
