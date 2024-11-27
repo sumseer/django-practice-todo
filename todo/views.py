@@ -41,6 +41,8 @@ class TaskToggleView(generic.View):
 
 class TagListView(generic.ListView):
     model = Tag
+    context_object_name = "tags"
+    template_name = "todo/tags_list.html"
 
 
 class TagCreateView(generic.CreateView):
