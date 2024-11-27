@@ -8,9 +8,8 @@
 <h1 class="mb-4">{{ view.title }}</h1>
 
 <form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit" class="btn btn-success">Save</button>
-  <a href="{% url 'todo:index' %}" class="btn btn-secondary">Cancel</a>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
 </form>
 {% endblock content %}

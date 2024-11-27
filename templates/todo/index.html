@@ -23,9 +23,9 @@
           <span class="badge {% if task.is_done %}badge-success{% else %}badge-danger{% endif %}">
             <td>{% if task.is_done %}Done{% else %}Not Done{% endif %}</td>
           </span>
-          <a href="{% url 'todo:task_update' task.id %}" class="btn btn-sm btn-primary ml-2">Update</a>
-          <a href="{% url 'todo:task_delete' task.id %}" class="btn btn-sm btn-danger ml-2">Delete</a>
-          <a href="{% url 'todo:task_toggle' task.id %}" class="btn btn-sm btn-secondary ml-2">
+          <a href="{% url 'todo:task-update' task.id %}" class="btn btn-sm btn-primary ml-2">Update</a>
+          <a href="{% url 'todo:task-delete' task.id %}" class="btn btn-sm btn-danger ml-2">Delete</a>
+          <a href="{% url 'todo:task-toggle' task.id %}" class="btn btn-sm btn-secondary ml-2">
             {% if task.is_done %}Undo{% else %}Complete{% endif %}
           </a>
         </div>
